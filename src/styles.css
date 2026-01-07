@@ -1,0 +1,388 @@
+/* Base styles - mobile first */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-error: #dc2626;
+  --color-warning: #d97706;
+  --color-success: #16a34a;
+  --color-text: #1f2937;
+  --color-text-light: #6b7280;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f3f4f6;
+  --color-border: #d1d5db;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --radius: 0.375rem;
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg-secondary);
+  min-height: 100vh;
+  padding: var(--spacing-md);
+}
+
+.container {
+  max-width: 32rem;
+  margin: 0 auto;
+  background-color: var(--color-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--spacing-lg);
+}
+
+header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+header p {
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-group label .required {
+  color: var(--color-error);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: border-color 0.15s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 4rem;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: var(--color-error);
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: 0.75rem;
+  margin-top: var(--spacing-xs);
+}
+
+.warning-message {
+  color: var(--color-warning);
+  font-size: 0.75rem;
+  margin-top: var(--spacing-xs);
+}
+
+/* Calendar links section */
+.calendar-links {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.calendar-links h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-md);
+}
+
+.calendar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.calendar-button-group {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.calendar-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.calendar-button:hover {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-primary);
+}
+
+.copy-button {
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-bg);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copy-button:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.copy-button.copied {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+
+/* Utility classes */
+.hidden {
+  display: none !important;
+}
+
+/* Mobile-specific touch adjustments */
+@media (hover: none) and (pointer: coarse) {
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: var(--spacing-md);
+  }
+
+  .calendar-button,
+  .copy-button {
+    min-height: 44px; /* Touch target size per WCAG */
+    padding: var(--spacing-md);
+  }
+}
+
+/* Focus visible styles for keyboard navigation */
+.calendar-button:focus-visible,
+.copy-button:focus-visible,
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Tablet and desktop */
+@media (min-width: 640px) {
+  body {
+    padding: var(--spacing-xl);
+  }
+
+  .container {
+    padding: var(--spacing-xl);
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+  }
+
+  .calendar-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .calendar-button-group {
+    flex: 1;
+    min-width: 45%;
+  }
+}
+
+/* Share section styles */
+.share-section {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.share-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius);
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.share-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.share-url-display {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.share-url-display input {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+/* Event summary styles (buttons-only view) */
+.event-summary {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+}
+
+.event-summary h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+}
+
+.event-datetime {
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.event-description {
+  color: var(--color-text);
+  font-size: 0.875rem;
+  white-space: pre-wrap;
+}
+
+/* Share error styles */
+.share-error {
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.share-error h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-error);
+  margin-bottom: var(--spacing-sm);
+}
+
+.share-error p {
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-lg);
+}
+
+.create-event-link {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius);
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.create-event-link:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Share footer */
+.share-footer {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.share-footer .create-event-link {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.share-footer .create-event-link:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+/* View mode styles - hide form in share mode */
+body.view-share #event-form {
+  display: none;
+}
+
+body.view-share #share-section {
+  display: none;
+}
+
+body.view-error #event-form {
+  display: none;
+}
+
+body.view-error #calendar-links {
+  display: none;
+}
+
+body.view-error #share-section {
+  display: none;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
