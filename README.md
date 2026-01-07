@@ -2,6 +2,8 @@
 
 Generate shareable calendar event links for Google Calendar, Outlook, and iCal.
 
+Démo: https://revolunet.github.io/event-link
+
 ## Features
 
 - Create calendar events with title, description, date/time, and URL
